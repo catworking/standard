@@ -1,5 +1,7 @@
 # 工程规范
 
+> 如果您对本规范有疑问，或者有改进建议，请 [创建一个Issue](https://github.com/catworking/standard/issues/new) 来进行讨论。
+
 为了提高软件项目工程的质量，降低交接成本，制定本规范。
 
 除了二手项目外，所有由CatWork团队创建的软件公程，都必须严格遵守本规范。
