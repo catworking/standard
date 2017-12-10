@@ -12,7 +12,7 @@
 UI的设计范围被限定在 Quasar 这个框架内，这意味着设计师必须使用 Quasar 现有的组件进行界面设计。
 组件库的样式请移步：
 - [Android 风格](http://quasar-framework.org/quasar-play/android/index.html#/showcase)
-- [IOS风格](http://quasar-framework.org/quasar-play/ios/index.html#/showcase)
+- [IOS风格](http://quasar-framework.org/quasar-play/apple/index.html#/showcase)
 
 ## 微信小程序
 
