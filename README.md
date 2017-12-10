@@ -19,9 +19,8 @@
 
 ## 设计
 
-- UI设计
-- 架构设计
-- 模块设计
+- [架构设计](design/architecture.md)
+- [UI设计](design/ui.md)
 
 ## 编码
 
