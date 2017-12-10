@@ -1,9 +1,9 @@
 # UI 设计
 
-- [手机APP](#phone-app)
-- [微信小程序](ui-wechat.md)
-- [Web服务端应用](ui-web-server-app.md)
-- [Web前端应用](ui-web-client-app.md)
+- [手机APP](#手机app)
+- [微信小程序](#微信小程序)
+- [Web服务端应用](#Web服务端应用)
+- Web前端应用
 
 ## 手机APP
 
@@ -13,6 +13,10 @@ UI的设计范围被限定在 Quasar 这个框架内，这意味着设计师必�
 组件库的样式请移步：
 - [Android 风格](http://quasar-framework.org/quasar-play/android/index.html#/showcase)
 - [IOS风格](http://quasar-framework.org/quasar-play/ios/index.html#/showcase)
+
+## 微信小程序
+
+使用微信官方的 WeUI 作为组件样式，可作颜色调整。
 
 ## Web服务端应用
 
