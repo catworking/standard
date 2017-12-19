@@ -27,4 +27,7 @@
 
 ## 全文搜索
 
-- search_api
+- [search_api](https://www.drupal.org/project/search_api) 全文搜索基础设施
+- [search_api_db](https://www.drupal.org/project/search_api_db) 基于数据库的全文搜索服务端
+- [search_api_solr](https://www.drupal.org/project/search_api_solr) 基于apache lucene的全文搜索服务端
+- [facets](https://www.drupal.org/project/facets) 分面搜索
