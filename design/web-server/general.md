@@ -1,9 +1,9 @@
 # Drupal 8 通用型解决方案
 
-- 数据建模
-- 管理后台框架
-- 客户端 API
-- 全文搜索
+- [数据建模](#数据建模)
+- [管理后台框架](#管理后台框架)
+- [客户端 API](#客户端 API)
+- [全文搜索](#全文搜索)
 
 ## 数据建模
 开发一个Web服务端应用时，一般都是先从数据建模开始。
@@ -16,12 +16,13 @@
 Entity由字段组成，称作Field。
 Field又由属性组成，称作Property。
 最后的Property才直接映射到数据库表的字段进行储存。
+需要注意的是，开发者是不需要直接管理数据库的，Drupal使用Doctrine的数据库抽象层，并且会自动帮你创建数据库表。
 
-Drupal核心已经提供了大量的Field类型，你可以直接使用这些Field类型来[定义你的Entity](https://www.drupal.org/docs/8/api/entity-api)。
+Drupal核心已经提供了大量的Field类型，你可以直接使用这些Field类型来 [定义你的Entity](https://www.drupal.org/docs/8/api/entity-api)。
 如果核心提供的Field类型仍然无法满足你的项目需求，你可以通过[Feild API](https://www.drupal.org/docs/8/creating-custom-modules/creating-a-custom-field)自定义Field类型。
 
-### Feild API
-在使用`Feild API`定义你的实体字段时，你需要明白的是，你不仅仅是在把实体字段的属性映射到数据库，
+### Field API
+在使用`Field API`定义你的实体字段时，你需要明白的是，你不仅仅是在把实体字段的属性映射到数据库，
 同时在定义你的字段`如何被显示`(通过定义对应的field formatter)，以及`如何被编辑`（通过定义对应的field widget）。
 
 - [Creating a custom Field](https://www.drupal.org/docs/8/creating-custom-modules/creating-a-custom-field)
@@ -30,7 +31,11 @@ Drupal核心已经提供了大量的Field类型，你可以直接使用这些Fie
 - [Create a custom field widget](https://www.drupal.org/docs/8/creating-custom-modules/create-a-custom-field-widget)
 
 ### Entity API
+在使用`Entity API`定义你的实体，你需要明白的是，你不仅仅是在定义它包含哪些实体字段，
+同时在定义你的实体`如何被显示`(字段顺序，以及各字段默认使用哪个field formatter显示)，
+以及`如何被编辑`（字段顺序，以及各字段默认使用哪个field widget进行编辑）。
 
+- [Entity API 如何创建数据实体](https://www.drupal.org/docs/8/api/entity-api)
 
 
 ## 管理后台框架
@@ -60,7 +65,7 @@ system模块本身是一个完整的应用（具体情况请安装drupal core来
 - [oauth 模块](https://www.drupal.org/project/oauth) 按
   [Oauth1.0](https://tools.ietf.org/html/rfc5849)工业规范实现的
   Oauth1.0 服务端，除非项目特别要求，否则请用Oauth2.0
-- [Views REST export](https://www.drupal.org/docs/8/core/modules/rest/get-on-views-generated-lists) 
+- [Views 模块的 `REST export` 功能](https://www.drupal.org/docs/8/core/modules/rest/get-on-views-generated-lists) 
   一般来说，REST不能解决所有问题，核心的REST模块提供了Views支持，用于解决复杂数据列表输出的问题。
 - [openapi 模块](https://www.drupal.org/project/openapi) 自动生成RESTful接口的文档。
   [OpenAPI Specification](https://swagger.io/specification/) 是`swagger`提出的一个API文档格式规范，
