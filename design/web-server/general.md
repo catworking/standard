@@ -21,9 +21,17 @@
 - 内联表单 Inline Entity Form
 
 ## 客户端 API
-- REST WebService
-- Oauth2.0
-- Views REST export 
+- [RESTful Web Services](https://www.drupal.org/docs/8/api/restful-web-services-api) 由Drupal核心提供的模块，
+  通过简单的yml配置，把entity曝露为标准的RESTful接口
+- [REST UI](https://www.drupal.org/docs/8/api/restui) 提供可视化界面来管理Entity的RESTful曝露
+- [Oauth2.0](https://www.drupal.org/project/simple_oauth) 按
+  [OAuth 2.0 Authorization Framework RFC](https://tools.ietf.org/html/rfc6749)工业规范实现的
+  Oauth2.0服务端
+- [Oauth 1.0](https://www.drupal.org/project/oauth) 按
+  [Oauth1.0](https://tools.ietf.org/html/rfc5849)工业规范实现的
+  Oauth1.0 服务端，除非项目特别要求，否则请用Oauth2.0
+- [Views REST export](https://www.drupal.org/docs/8/core/modules/rest/get-on-views-generated-lists) 
+  一般来说，REST不能解决所有问题，核心的REST模块提供了Views支持，用于解决复杂数据列表输出的问题。
 
 ## 全文搜索
 
