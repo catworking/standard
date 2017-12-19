@@ -1,12 +1,12 @@
 # 架构设计
 
 - Web服务端应用
-
+  
   使用[Drupal8](https://www.drupal.org)作为开发框架。
   
-  - [Drupal8 通用型解决方案](web-server/general.md)
-  - [Drupal8 电商解决方案](web-server/commerce.md)
-  - [Drupal8 社交解决方案](web-server/social.md)
+  - [Drupal8 通用型解决方案](web-server/general.md)
+  - [Drupal8 电商解决方案](web-server/commerce.md)
+  - [Drupal8 社交解决方案](web-server/social.md)
  
 - 手机APP
   
