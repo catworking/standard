@@ -38,6 +38,12 @@ Drupal核心已经提供了大量的Field类型，你可以直接使用这些Fie
 以及`如何被编辑`（字段顺序，以及各字段默认使用哪个field widget进行编辑）。
 
 - [Entity API 如何创建数据实体](https://www.drupal.org/docs/8/api/entity-api)
+- [Entity handlers 实体处理器](https://www.drupal.org/docs/8/api/entity-api/handlers)
+  
+  实体处理器非常重要，如上所述，你不仅仅是在定义实体包含哪些字段，还在定义实体是如何被处理的。
+  处理器有多种类型，用于对实体执行不同类型的处理任务，如：储存处理器、事件处理器、仿问处理器等。
+  系统提供了很多有用的处理器，大多数情况下，使用系统提供的处理器就已经可以满足你的需求，
+  如何有特别的需要，你可以扩展这些处理器，加入你需要的功能。
 
 
 ## 管理后台框架
@@ -77,9 +83,13 @@ Drupal是非常灵活的，并且提供了一系列的概念，在这些概念�
   路由指明了url与php控制器类的映射关系。
   控制器会返回一些用于显示的数据，然后Drupal把这些数据渲染成HTML或其他的格式输出给用户。
   
-  特别地，路由还可以直接与一个表单类进行关联，直接渲染一个表单页面。
+  特别地，路由还可以直接与一个表单类进行关联，直接渲染一个表单页面。
 
-- 表单 Entity Form
+- [实体表单 Entity Form](https://www.drupal.org/docs/8/api/entity-api/display-modes-view-modes-and-form-modes)
+  
+  表单有多种类型，实体表单Entity Form则是Entity处理器的一种，在定义Entity时，为其关联的表单处理器，
+  以指明实体在不同情况下（default add edit delete）使用什么表单进行编辑。
+  
 - 表单字段部件 Feild Widget
 - 内联表单 Inline Entity Form
 - 使用View生成Entity数据表列表页面
