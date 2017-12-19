@@ -37,6 +37,10 @@ system模块本身是一个完整的应用（具体情况请安装drupal core来
   Oauth1.0 服务端，除非项目特别要求，否则请用Oauth2.0
 - [Views REST export](https://www.drupal.org/docs/8/core/modules/rest/get-on-views-generated-lists) 
   一般来说，REST不能解决所有问题，核心的REST模块提供了Views支持，用于解决复杂数据列表输出的问题。
+- [OpenAPI](https://www.drupal.org/project/openapi) 自动生成RESTful接口的文档。
+  [OpenAPI Specification](https://swagger.io/specification/) 是`swagger`提出的一个API文档格式规范，
+  这个模块自动生成符合该规范的文档数据，并使用 [Swagger UI](https://swagger.io/swagger-ui/)
+  把文档显示成可交互的文档格式。
 
 ## 全文搜索
 
