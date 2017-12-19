@@ -95,14 +95,15 @@ Drupal是非常灵活的，并且提供了一系列的概念，在这些概念�
   内联表单是经常需要用到的东西，也叫内嵌表单，也就是“表单中的表单”，在创建关联数据时非常有用。
   `inline_entity_form模块`提供这样的功能。
   
-- 使用View生成Entity数据表列表页面
+- [使用View生成Entity数据表列表页面](https://www.drupal.org/docs/8/core/modules/views)
   
-  一般来说管理后台中的数据列表功能是不需要开发的，完全可以直接使用Views模块来创建，
+  一般来说管理后台中的数据列表功能是不需要开发的，完全可以直接使用 [Views模块](https://www.drupal.org/docs/8/core/modules/views) 来创建，
   只需要在后台点几下，就可以创建一个完美的数据列表页。
   
-- 通过创建一个管理后台主题（Admin Theme）来自定义管理后台的外观。
+- [通过创建一个管理后台主题（Admin Theme）来自定义管理后台的外观](https://www.drupal.org/docs/8/theming)
   
-  Drupal核心自带了一个叫`Seven`的管理后台主题，你可以继承它，来扩展或覆写这个主题的一部份。
+  Drupal核心自带了一个叫 [`Seven`](https://www.drupal.org/docs/8/core/themes/seven-theme) 
+  的管理后台主题，你可以继承它，来扩展或覆写这个主题的一部份。
   或者干脆仿照它来重写一个主题。
 
 ## 客户端 API
