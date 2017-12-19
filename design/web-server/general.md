@@ -6,8 +6,32 @@
 - 全文搜索
 
 ## 数据建模
-- Drupal Entity API
-- Feild API
+开发一个Web服务端应用时，一般都是先从数据建模开始。
+根据项目需求，识别系统需要抽象的数据实体(entity)。
+
+数据实体由`实体字段`（称为实体字段是为了与数据库的字段进行区分）构成。`实体字段`一般情况下可以直接映射为`数据库字段`，但是并不总是如此，
+比如产品的价格，它包含两项数据，“货币类型”和“货币数量”，所以价格字段至少需要两个数据库字段来储存。
+
+在Drupal中，从业务需求中分析得到的数据实体称为Entity。
+Entity由字段组成，称作Field。
+Field又由属性组成，称作Property。
+最后的Property才直接映射到数据库表的字段进行储存。
+
+Drupal核心已经提供了大量的Field类型，你可以直接使用这些Field类型来[定义你的Entity](https://www.drupal.org/docs/8/api/entity-api)。
+如果核心提供的Field类型仍然无法满足你的项目需求，你可以通过[Feild API](https://www.drupal.org/docs/8/creating-custom-modules/creating-a-custom-field)自定义Field类型。
+
+### Feild API
+在使用`Feild API`定义你的实体字段时，你需要明白的是，你不仅仅是在把实体字段的属性映射到数据库，
+同时在定义你的字段`如何被显示`(通过定义对应的field formatter)，以及`如何被编辑`（通过定义对应的field widget）。
+
+- [Creating a custom Field](https://www.drupal.org/docs/8/creating-custom-modules/creating-a-custom-field)
+- [Create a custom field type](https://www.drupal.org/docs/8/creating-custom-modules/create-a-custom-field-type)
+- [Create a custom field formatter](https://www.drupal.org/docs/8/creating-custom-modules/create-a-custom-field-formatter)
+- [Create a custom field widget](https://www.drupal.org/docs/8/creating-custom-modules/create-a-custom-field-widget)
+
+### Entity API
+
+
 
 ## 管理后台框架
 使用Drupal核心的提供的后台界面(system模块)，来开发应用的Web管理后台。
@@ -24,28 +48,29 @@ system模块本身是一个完整的应用（具体情况请安装drupal core来
 - 表单 Entity Form
 - 表单字段部件 Feild Widget
 - 内联表单 Inline Entity Form
+- 使用View生成Entity数据表列表页面
 
 ## 客户端 API
-- [RESTful Web Services](https://www.drupal.org/docs/8/api/restful-web-services-api) 由Drupal核心提供的模块，
+- [RESTful Web Services 模块](https://www.drupal.org/docs/8/api/restful-web-services-api) 由Drupal核心提供的模块，
   通过简单的yml配置，把entity曝露为标准的RESTful接口
-- [REST UI](https://www.drupal.org/docs/8/api/restui) 提供可视化界面来管理Entity的RESTful曝露
-- [Oauth2.0](https://www.drupal.org/project/simple_oauth) 按
+- [restui 模块](https://www.drupal.org/docs/8/api/restui) 提供可视化界面来管理Entity的RESTful曝露
+- [simple_oauth 模块](https://www.drupal.org/project/simple_oauth) 按
   [OAuth 2.0 Authorization Framework RFC](https://tools.ietf.org/html/rfc6749)工业规范实现的
   Oauth2.0服务端
-- [Oauth 1.0](https://www.drupal.org/project/oauth) 按
+- [oauth 模块](https://www.drupal.org/project/oauth) 按
   [Oauth1.0](https://tools.ietf.org/html/rfc5849)工业规范实现的
   Oauth1.0 服务端，除非项目特别要求，否则请用Oauth2.0
 - [Views REST export](https://www.drupal.org/docs/8/core/modules/rest/get-on-views-generated-lists) 
   一般来说，REST不能解决所有问题，核心的REST模块提供了Views支持，用于解决复杂数据列表输出的问题。
-- [OpenAPI](https://www.drupal.org/project/openapi) 自动生成RESTful接口的文档。
+- [openapi 模块](https://www.drupal.org/project/openapi) 自动生成RESTful接口的文档。
   [OpenAPI Specification](https://swagger.io/specification/) 是`swagger`提出的一个API文档格式规范，
   这个模块自动生成符合该规范的文档数据，并使用 [Swagger UI](https://swagger.io/swagger-ui/)
   把文档显示成可交互的文档格式。
 
 ## 全文搜索
 
-- [search_api](https://www.drupal.org/project/search_api) 全文搜索基础设施
-- [search_api_db](https://www.drupal.org/project/search_api_db) 基于数据库的全文搜索服务端
-- [search_api_solr](https://www.drupal.org/project/search_api_solr) 基于apache lucene的全文搜索服务端
-- [facets](https://www.drupal.org/project/facets) 提供分面搜索（
+- [search_api 模块](https://www.drupal.org/project/search_api) 全文搜索基础设施
+- [search_api_db 模块](https://www.drupal.org/project/search_api_db) 基于数据库的全文搜索服务端
+- [search_api_solr 模块](https://www.drupal.org/project/search_api_solr) 基于apache lucene的全文搜索服务端
+- [facets 模块](https://www.drupal.org/project/facets) 提供分面搜索（
   [什么是分面搜索？](http://cdc.tencent.com/2009/07/30/%E5%88%86%E9%9D%A2%E6%90%9C%E7%B4%A2%EF%BC%88faceted-search%EF%BC%89/)）功能
