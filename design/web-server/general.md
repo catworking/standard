@@ -38,4 +38,5 @@
 - [search_api](https://www.drupal.org/project/search_api) 全文搜索基础设施
 - [search_api_db](https://www.drupal.org/project/search_api_db) 基于数据库的全文搜索服务端
 - [search_api_solr](https://www.drupal.org/project/search_api_solr) 基于apache lucene的全文搜索服务端
-- [facets](https://www.drupal.org/project/facets) 分面搜索
+- [facets](https://www.drupal.org/project/facets) 提供分面搜索（
+  [什么是分面搜索？](http://cdc.tencent.com/2009/07/30/%E5%88%86%E9%9D%A2%E6%90%9C%E7%B4%A2%EF%BC%88faceted-search%EF%BC%89/)）功能
