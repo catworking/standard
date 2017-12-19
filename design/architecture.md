@@ -4,6 +4,10 @@
 
   使用[Drupal8](https://www.drupal.org)作为开发框架。
   
+  [Drupal8 通用型解决方案](web-server/general.md)
+  [Drupal8 电商解决方案](web-server/commerce.md)
+  [Drupal8 社交解决方案](web-server/social.md)
+ 
 - 手机APP
   
   使用 [Cordova](https://cordova.apache.org) 作为跨平台开发工具，
