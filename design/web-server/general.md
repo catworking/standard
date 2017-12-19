@@ -53,14 +53,31 @@ Drupal是非常灵活的，并且提供了一系列的概念，在这些概念�
 因为Drupal中的一切都是由模块提供的，核心有几十个模块，开发者同样也是通过编写模块来扩展Drupal，
 并且，开发者编写的模块与核心模块的地位是相同的，没有任何区别。
 
-下面是一些重要的概念解释，对正在学习如何开发模块你会有帮助：
+下面是一些要素，在开发管理后台界面功能时非常有用：
 
-- 路由 路由是浏览器请求开始的地方，它指明了url与php控制器类的映射关系。
-- 菜单链接 menu link 如何创建管理后后的系统菜单项
-- 动作链接 action link 如何创建管理后台页面中的动作按钮，比如在“产品列表”页面的“添加产品”按钮
-- 任务链接 task link 如何创建任务链接。在数据项的详情页面，有一些类似标签页的链接，
-  如“查看”、“编辑”、“管理字段”、“管理表单显示”等，
-  这些被称为对此数据项的处理任务。
+- [链接](https://www.drupal.org/docs/8/api/menu-api)
+  
+  链接是用户交互开始的地方，链接类型决定了链接在页面中出现的地方，
+  链接还定义了url所关联的路由。
+  - [菜单链接 menu link](https://www.drupal.org/docs/8/api/menu-api/providing-module-defined-menu-links) 
+  
+    如何创建管理后后的系统菜单项
+  - [动作链接 action link](https://www.drupal.org/docs/8/api/menu-api/providing-module-defined-actions) 
+    
+    如何创建管理后台页面中的动作按钮，比如在“产品列表”页面的“添加产品”按钮
+  - [任务链接 task link](https://www.drupal.org/docs/8/api/menu-api/providing-module-defined-local-tasks) 
+    
+    如何创建任务链接。在数据项的详情页面，有一些类似标签页的链接，
+    如“查看”、“编辑”、“管理字段”、“管理表单显示”等，
+    这些被称为对此数据项的处理任务。
+- [路由](https://www.drupal.org/docs/8/api/routing-system)
+  
+  用户点击了页面中的链接后，请求会被调度到url所关联的路由。
+  路由指明了url与php控制器类的映射关系。
+  控制器会返回一些用于显示的数据，然后Drupal把这些数据渲染成HTML或其他的格式输出给用户。
+  
+  特别地，路由还可以直接与一个表单类进行关联，直接渲染一个表单页面。
+
 - 表单 Entity Form
 - 表单字段部件 Feild Widget
 - 内联表单 Inline Entity Form
