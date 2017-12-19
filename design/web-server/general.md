@@ -4,7 +4,7 @@
 
 - [数据建模](#数据建模)
 - [管理后台框架](#管理后台框架)
-- [客户端 API](#客户端API)
+- [客户端 API](#客户端-api)
 - [全文搜索](#全文搜索)
 
 ## 数据建模
@@ -21,7 +21,7 @@ Field又由属性组成，称作Property。
 需要注意的是，开发者是不需要直接管理数据库的，Drupal使用Doctrine的数据库抽象层，并且会自动帮你创建数据库表。
 
 Drupal核心已经提供了大量的Field类型，你可以直接使用这些Field类型来 [定义你的Entity](https://www.drupal.org/docs/8/api/entity-api)。
-如果核心提供的Field类型仍然无法满足你的项目需求，你可以通过[Feild API](https://www.drupal.org/docs/8/creating-custom-modules/creating-a-custom-field)自定义Field类型。
+如果核心提供的Field类型仍然无法满足你的项目需求，你可以通过[Feild API](#field-api)自定义Field类型。
 
 ### Field API
 在使用`Field API`定义你的实体字段时，你需要明白的是，你不仅仅是在把实体字段的属性映射到数据库，
@@ -57,7 +57,7 @@ system模块本身是一个完整的应用（具体情况请安装drupal core来
 - 内联表单 Inline Entity Form
 - 使用View生成Entity数据表列表页面
 
-## 客户端API
+## 客户端 API
 - [RESTful Web Services 模块](https://www.drupal.org/docs/8/api/restful-web-services-api) 由Drupal核心提供的模块，
   通过简单的yml配置，把entity曝露为标准的RESTful接口
 - [restui 模块](https://www.drupal.org/docs/8/api/restui) 提供可视化界面来管理Entity的RESTful曝露
