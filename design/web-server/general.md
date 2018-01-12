@@ -137,3 +137,5 @@ Drupal是非常灵活的，并且提供了一系列的概念，在这些概念�
 参见文章 [在Drupal8中使用Drush+Features模块通过Git迁移配置](http://www.zhaobg.com/how-to-use-drush-features)
 
 TODO: 把该文章的要点整理过来，以免外部文章连接失效
+
+[Features模块](https://www.drupal.org/docs/8/modules/features)
