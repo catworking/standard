@@ -46,6 +46,11 @@ Drupal核心已经提供了大量的Field类型，你可以直接使用这些Fie
   系统提供了很多有用的处理器，大多数情况下，使用系统提供的处理器就已经可以满足你的需求，
   如何有特别的需要，你可以扩展这些处理器，加入你需要的功能。
 
+- [Entity Storage, the Drupal 8 Way](https://www.drupalwatchdog.com/blog/2015/3/entity-storage-drupal-8-way) 
+  
+  解释Drupal8的实体与数据库表的对应关系。
+  
+  简单实体、可翻译实体、可版本化实体，这三种情况，Core SQL Storage分别是如何在数据库中储存他们的。
 
 ## 管理后台框架
 使用Drupal核心的提供的后台界面(system模块)，来开发应用的Web管理后台。
