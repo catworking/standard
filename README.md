@@ -31,4 +31,10 @@
 
 ## 测试
 
+使用自动化测试技术
+
+- 单元测试框架 [PHPUnit](https://phpunit.de/)
+- 行为测试框架 Behat Mink
+- [Drupal8测试框架](https://www.drupal.org/docs/8/testing)
+
 ## 交付
