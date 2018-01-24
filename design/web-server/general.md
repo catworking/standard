@@ -4,6 +4,7 @@
 
 - [数据建模](#数据建模)
 - [管理后台框架](#管理后台框架)
+- [用户认证](#用户认证)
 - [客户端 API](#客户端-api)
 - [全文搜索](#全文搜索)
 - [使用Features模块协助基于配置的开发](#使用Features模块协助基于配置的开发)
@@ -111,6 +112,28 @@ Drupal是非常灵活的，并且提供了一系列的概念，在这些概念�
   Drupal核心自带了一个叫 [`Seven`](https://www.drupal.org/docs/8/core/themes/seven-theme) 
   的管理后台主题，你可以继承它，来扩展或覆写这个主题的一部份。
   或者干脆仿照它来重写一个主题。
+
+
+## 用户认证
+Drupal自身带有完整的用户认证和访问控制系统。
+核心本身已经支持使用`用户名`和`密码`通过Web表单登录，通过整合社区中的模块，几乎可以实现任何形式的用户认证。
+
+- 社交帐号认证(OAuth2.0)
+
+  通过 [Social Auth](https://www.drupal.org/project/social_auth) 模块，
+  可以实现包括 `微信` 在内的20多种社交网络帐号登录。
+  
+  - [Social Auth WeChat](https://www.drupal.org/project/social_auth_wechat) 微信扫码登录
+  - 微信公众号网页授权，暂无实现
+
+- 双因素授权(Two-Factor Authentication)
+  
+  [One Time Password](https://www.drupal.org/project/one_time_password) 模块提供了双因素授权功能，
+  在用户通过用户名密码登录后，需要使用其他认证器二次认证。
+
+  - [One Time Password SMS](https://www.drupal.org/project/otp_sms) 手机短信进行二次认证
+
+- 双步验证(Two-Step Verification)
 
 ## 客户端 API
 - [RESTful Web Services 模块](https://www.drupal.org/docs/8/api/restful-web-services-api) 由Drupal核心提供的模块，
