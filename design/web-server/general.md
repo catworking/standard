@@ -135,6 +135,20 @@ Drupal自身带有完整的用户认证和访问控制系统。
 
 - 双步验证(Two-Step Verification)
 
+## 手机相关功能
+
+- [SMS Framework](https://www.drupal.org/project/smsframework) 提供了一个用于发送短信的接口。
+  
+  开发者可以实现自己的短信网关。提供了把手机号码字段绑定到特定`Entity Type`的功能，比如`User`。
+  开发者可以把短信发送给特定的entity，比如某个用户，也可以直接发给一个手机号码。
+  
+  此模块还提供了短信发送队列的功能，解决大量短信发送时的耗时问题，以及短信服务商的发送频率限制问题。
+
+- 手机号码验证（支持全球所有国家）
+  - [Mobile Number](https://www.drupal.org/project/mobile_number)  供对用户输入的号码发送短信进行验证的功能。
+    
+- 手机号码标识用户
+
 ## 客户端 API
 - [RESTful Web Services 模块](https://www.drupal.org/docs/8/api/restful-web-services-api) 由Drupal核心提供的模块，
   通过简单的yml配置，把entity曝露为标准的RESTful接口
