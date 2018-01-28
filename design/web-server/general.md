@@ -135,6 +135,16 @@ Drupal自身带有完整的用户认证和访问控制系统。
 
 - 双步验证(Two-Step Verification)
 
+- [Oauth2 Server](https://www.drupal.org/project/oauth2_server) 实现了一个Oauth2.0服务端，
+  本质上是整合了著名的[bshaffer/oauth2-server-php](https://github.com/bshaffer/oauth2-server-php)。
+  然而此模块与 [simple_oauth](https://www.drupal.org/project/simple_oauth) 模块有功能交叉，
+  该模块使用了另一个Oauth2.0库 [thephpleague/oauth2-server](https://github.com/thephpleague/oauth2-server)
+
+- [OpenID Connect](https://www.drupal.org/project/openid_connect) OpenID Connect是建立在Oauth2.0之上的一个身份层协议，
+  是一种Oauth2.0客户端标准，简单点说就是在Oauth2.0认证过程完成后，拿access token去调用一个用户信息接口，获取用户身份。
+
+> 如果仅仅是登录，openid_connect模块和 social_auth模块都可以做到，如果要使用Oauth2 Client访问更多的第三方资源，那就应该用openid_connect模块了
+
 ## 手机相关功能
 
 - [SMS Framework](https://www.drupal.org/project/smsframework) 提供了一个用于发送短信的接口。
