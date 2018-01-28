@@ -174,6 +174,16 @@ Drupal自身带有完整的用户认证和访问控制系统。
 - [facets 模块](https://www.drupal.org/project/facets) 提供分面搜索（
   [什么是分面搜索？](http://cdc.tencent.com/2009/07/30/%E5%88%86%E9%9D%A2%E6%90%9C%E7%B4%A2%EF%BC%88faceted-search%EF%BC%89/)）功能
 
+## 性能提升
+
+- [OSS对象储存](https://www.drupal.org/project/ossfs) 实现了一个文件系统选项，把用户上传的文件保存到阿里云OSS服务。
+
+  [Drupal 8 使用阿里云OSS安装配置攻略](http://www.drupal.org.cn/ossfs-config) 此文章详细介绍了该模块的使用过程。
+
+- [Redis缓存模块](https://www.drupal.org/project/redis) 把Redis作为Drupal的缓存系统，大幅提高性能
+
+  [Redis在Drupal构建新媒体平台中的重要性及详细使用攻略](http://www.drupal.org.cn/redis/1) 此文章介绍了如何应用该模块
+
 ## 使用Features模块协助基于配置的开发
 
 参见文章 [在Drupal8中使用Drush+Features模块通过Git迁移配置](http://www.zhaobg.com/how-to-use-drush-features)
