@@ -205,6 +205,7 @@ TODO: 把该文章的要点整理过来，以免外部文章连接失效
 ## 渲染和输出
 
 - [Render API概述](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21theme.api.php/group/theme_render/8.4.x)
+- [D8开发者文档 Render API](https://www.drupal.org/docs/8/api/render-api/render-arrays)
 
 ### Render Array
 
