@@ -201,3 +201,30 @@ Drupal自身带有完整的用户认证和访问控制系统。
 TODO: 把该文章的要点整理过来，以免外部文章连接失效
 
 [Features模块](https://www.drupal.org/docs/8/modules/features)
+
+## 渲染和输出
+
+- [Render API概述](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21theme.api.php/group/theme_render/8.4.x)
+
+### Render Array
+
+- [Drupal Core 所有`元素`通用的渲染属性](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21RenderElement.php/class/RenderElement/8.5.x)
+- [Drupal Core 所有`表单元素`通用的渲染属性](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21FormElement.php/class/FormElement/8.5.x)
+- [`#Ajax`属性和`Ajax API`](https://api.drupal.org/api/drupal/core%21core.api.php/group/ajax/8.5.x)
+
+### Render Element
+
+Render Array 预打包，形成Element Type。
+
+分为 `常规元素` 和 `表单元素`，后者继承前者，用于构建表单的可输入元素。
+
+- [Drupal Core 自带的所有元素](https://api.drupal.org/api/drupal/elements)
+- [如何创建一个Element Type (D6/D7，D8有一定参考价值)](https://www.drupal.org/node/169815)
+
+### FieldFormatter
+
+### FieldWidget
+
+### FormBuilder
+
+- [FormBuilder 如何实例化一个表单类，并处理表单提交](https://api.drupal.org/api/drupal/core%21core.api.php/group/form_api/8.5.x)
