@@ -212,6 +212,7 @@ TODO: 把该文章的要点整理过来，以免外部文章连接失效
 - [Drupal Core 所有`元素`通用的渲染属性](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21RenderElement.php/class/RenderElement/8.5.x)
 - [Drupal Core 所有`表单元素`通用的渲染属性](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21FormElement.php/class/FormElement/8.5.x)
 - [`#Ajax`属性和`Ajax API`](https://api.drupal.org/api/drupal/core%21core.api.php/group/ajax/8.5.x)
+- [Drupal7 中关于渲染属性的文档，可作为Drupal8的文档补充](https://api.drupal.org/api/drupal/developer%21topics%21forms_api_reference.html/7.x)
 
 ### Render Element
 
