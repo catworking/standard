@@ -219,14 +219,94 @@ TODO: 把该文章的要点整理过来，以免外部文章连接失效
 Render Array 预打包，形成Element Type。
 
 分为 `常规元素` 和 `表单元素`，后者继承前者，用于构建表单的可输入元素。
+前者仅用于显示数据，常常会使用 `theme` 模板来渲染输出。
+后者可以包含用户的输入值，所以常用于处理表单渲染。
+
+一个元素可以是通过组合其他已有元素的方式而定义出来的，我们可以称其为 `复合元素`。（官方没有这种术语）
+一个复合元素，它可以是 `常规元素` 和 `表单元素`，当它是 `常规元素` 时，它是可以包含 `表单元素` 的，反之亦然。
 
 - [Drupal Core 自带的所有元素](https://api.drupal.org/api/drupal/elements)
 - [如何创建一个Element Type (D6/D7，D8有一定参考价值)](https://www.drupal.org/node/169815)
+
+> `FormElement` 使用 `valueCallback()` 方法，把用户的输入 `$input`，设置为自身的值（在方法内 `return`）。
+
+### Form API 与 Render Element
+
+表单使用 `Render Element` 构建表单输出。
+
+表单的提交，通过 [Button](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21Button.php/class/Button/8.5.x) 
+或 [Submit](https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Render%21Element%21Submit.php/class/Submit/8.5.x) 元素触发。二者的区别在于，
+前者只是提交表单到服务端，执行表单重构 `buildForm()`，验证表单提交数据 `validateForm()`，但不会执行表单对象的 `submitForm()`，
+而后者则会执行 `submitForm()`。
+
+
+
+
+### 字段化 `Content Entity` 的表单处理器
+
+`Content Entity`的编辑表单，是在实体定义注解中通过 `handlers` 来指定表单处理器的。
+`实体表单处理器` 是一种特殊的表单，它与字段的 `FieldWidget` 进行交互，
+让各个字段自己管理各自的表单处理任务，包括 `构建` `数据验证` `数据保存`。
 
 ### FieldFormatter
 
 ### FieldWidget
 
+> `FieldWidget` 有 `单值模式` 和 `多值模式`，默认为 `单值模式`。通过在注解定义时的 `multiple_values = TRUE` 选项来开启 `多值模式`。
+
+> 在 `单值模式` 下，系统会自动处理字段的多值管理，包括创建一个值列表，新增/删除/修改字段值，处理排序。
+在这个过程中，系统会多次调用 `单值模式` 的 `FieldWidget::formElement()` 来构建多值列表，
+每一次的调用 `$delta` 参数会给出不同的下标。
+
+> 在 `多值模式` 下，开发者要自己实现多值管理功能，系统只调用一次 `FieldWidget::formElement()`，
+开发者需要在此方法内把 `$items[]` 的所有值传给 `FormElement` 的 `#default_value` 渲染属性。
+并添加 `#element_validate` 渲染属性，指定一个 `callback`，把元素的值处理成一个数组，
+多值的顺序问题开发者也需要在这个过程中自行处理，此数组的顺序就是多值的顺序。
+还有一个特别的地方是，Drupal保存多值时，会把所有原有值都删除，然后重新创建新提交的数据。
+参考代码 `Drupal\field_test\Plugin\Field\FieldWidget\TestFieldWidgetMultiple`。
+
+> `FieldWidget` 通过 `formElement()` 方法定义表单元素，一般对应的 `FieldType` 有几个属性，
+就要定义几个元素来供用户输入数据。通过把方法参数 `$items[$delta]->value` 设置为元素的 `#default_value` 渲染属性值，
+达到把字段值传给 `FormElement` 插件来显示的目的。
+
+> `FieldWidget` 通过 `WidgetBase::extractFormValues()` 方法，从 `FormElement` 提取值来保存到字段对像，
+字段对像再把数据保存到数据库。
+
 ### FormBuilder
 
 - [FormBuilder 如何实例化一个表单类，并处理表单提交](https://api.drupal.org/api/drupal/core%21core.api.php/group/form_api/8.5.x)
+
+### Inline Entity Form 内联表单
+
+#### 概述
+
+简称 IEF，这是一个由 DrupalCommerce 团队开发的一个模块。DrupalCore 本身是没有内联表单这种概念的。
+但我们在工作中发现 `内联表单` 是一个非常重要的需求。
+
+#### 应用背景
+
+在一个实体中包含另一个实体的引用时，DrupalCore的方案是使用 `EntityReference` 字段，
+该字段类型一般使用 `AutoComplete` 字段控件来编辑引用。但是这个控件只能解决编辑引用关系的问题，
+如果想直接在实体编辑表单中新建/编辑另一个引用的实体的字段内容，就办不到了。这就是 `IEF` 要解决的问题。
+
+#### 实现原理
+
+在实际开发中，我们发现 `HTML` 的 `Form` 是不能嵌套的。所以引用实体的编辑只能和缩主实体使用同一个 `Form`。
+于是 IEF 模块定义了一个叫 `InlineEntityForm` 的 `RenderElement`，用于在实体表单中，显示 `EntityReference`
+字段编辑界面，这个 `RenderElement` 调用被引用实体类型的表单生成器，去生成内联表单。
+
+有了 `RenderElement` 还不够，要使字段能使用这个 Element，还需要有 FieldWidget。
+所以，IEF模块还定义了两个 FieldWidget：
+
+- inline_entity_form_simple 只能处理单值，多值时，由系统解决值列表和排序问题
+- inline_entity_form_complex 能处理多值，它自己实现了类似系统的多值列表和排序功能，但是有所改进
+
+如果这两个 Widget 都不能满足你的需求，那么你可以用 `InlineEntityForm` 元素开发自己的 Widget 。
+
+#### InlineEntityForm 元素的表单提交
+
+
+
+
+
+
