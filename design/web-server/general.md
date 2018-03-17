@@ -301,12 +301,67 @@ Render Array 预打包，形成Element Type。
 - inline_entity_form_simple 只能处理单值，多值时，由系统解决值列表和排序问题
 - inline_entity_form_complex 能处理多值，它自己实现了类似系统的多值列表和排序功能，但是有所改进
 
-如果这两个 Widget 都不能满足你的需求，那么你可以用 `InlineEntityForm` 元素开发自己的 Widget 。
+如果这两个 Widget 都不能满足你的需求，那么你参考它们，用 `InlineEntityForm` 元素开发自己的 Widget 。
 
 #### InlineEntityForm 元素的表单提交
 
+如果你要开发自己的 FieldWidget，那么需要对 `InlineEntityForm` 这个 RenderElement 要有深入的了解，
+特别是表单提交时，它的处理机制。
+这里只说明一下大致流程，配合代码去看，能够看明白。
 
+- 自定义了一个元素属性 `#ief_element_submit`，用来标记内联表单被提交时，需要调用的 `Callback`，
+  默认自带一个Callback，它直接调用 `inline_form_handler` 的 `entityFormSubmit()` 方法。
+  
+- 在构建 `InlineEntityForm` 元素时，生成内联实体编辑表单后，把内联表单的提交按钮元素处理一下，
+  添加一个统一的 Callback `ElementSubmit::trigger()`，并把自定义属性 `#ief_submit_trigger`
+  和 `#ief_submit_trigger_all`设为 true， 标记为内联表单提交按钮，以便在表单提交时，
+  识别用户点击的是否为内联表单按钮。
+  
+- 在 `ElementSubmit::trigger()` 中，判断触发提交的元素，如果是内联表单按钮，
+  那么执行 `InlineEntityForm` 元素属性 `#ief_element_submit` 所标记的所有回调。
+  需要注意的是，内联表单可能会有多重嵌套，比如 A 实体引用了 B实体，但 B实体又引用了 C 实体，
+   `ElementSubmit::trigger()` 会递归所有的嵌套内联表单，去执行回调。
 
+#### 实体的内联表单处理器
 
+IEF 文档中说明了，实体是要添加代码来支持 IEF的，换言之，如果你的实体没有针对 IEF 写了代码，
+那么IEF 是无法编辑你的实体的。这种支持代码叫 `内联表单处理器 InlineFormHandler`。
 
+IEF 提供了一个基类叫 `EntityInlineForm`，开发者可以继承它，
+来实现特定实体类型的 InlineFormHandler，然后把实现好的 Handler添加到实体的定义注解中：
 
+```php
+/**
+ *   ...
+ 
+ *   handlers = {
+ *     "inline_form" = "Drupal\commerce_product\Form\ProductVariationInlineForm",
+ *
+ *   ...
+ */
+```
+
+如果你需要支持的是别人写的实体，你可以通过 hook 去注入 Handler，参考 IEF模块的hook实现： 
+`inline_entity_form_entity_type_build`，
+IEF 模块默认实现了 `node` 的InlineFormHandler，并在此 hook中进行注入，对于其他的实体，
+它判断如果还没有 `inline_form` 定义，那么使用前面提交的基类 `EntityInlineForm` 作为默认处理器。
+
+`EntityInlineForm` 实现了接口 `Drupal\inline_entity_form\InlineFormInterface`，
+这个接口表明了一个处理器需要实现哪些方法：
+
+- getEntityType() 表明要处理的实体类型
+- getEntityTypeLabels() 实体类型的名称，用于显示给用户的 （即将移除）
+- getEntityLabel($entity) 返回给定实体的名称，这里的$entity 是一个实例，是具体的数据。 
+- getTableFields($bundles) 在处理多值时，会有一个值列表，这个方法指明了把哪些字段显示到这个列表中，以及如何显示这些字段。
+- isTableDragEnabled($element) 指明多值列表是否允许用户拖动行来排序。
+- entityForm() `InlineEntityForm` 这个 `RenderElement`会调用这个方法来生成内联表单。
+- entityFormValidate()  `InlineEntityForm` 这个 `RenderElement`会调用这个方法来验证内联表单。
+- entityFormSubmit()  `InlineEntityForm` 这个 `RenderElement`会在验证成功后，调用这个方法来处理内联表单的提交。
+- save() `InlineEntityForm` 这个 `RenderElement`会在调用提交处理后，如果 `#save_entity`属性为 true, 调用这个方法。
+- delete() 用户在内联表单中点击删除，会调用此方法。
+
+基类 `EntityInlineForm` 已经实现了绝大部分的功能，一般情况下，这个基类对于任何 entity type都是可以正常工作的。
+如果你要实现自己的处理器，除了可以参考 IEF 自带的 `node` 处理器外，还可以参考：
+
+- `commerce_product` 模块中的 `Drupal\commerce_product\Form\ProductVariationInlineForm`
+- `commerce_order` 模块中的`Drupal\commerce_order\Form\OrderItemInlineForm`
