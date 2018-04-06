@@ -29,6 +29,15 @@ which in turn depend on other best-of-breed modules and libraries.
 ## 分销功能
 ## 拼团功能
 
+## 促销
+
+促销本质上是对符合一定条件的订单进行价格调整。
+
+### 优惠券
+
+优惠券是一种特殊的促销，一个促销活动如果创建了优惠券，那么它就不会自动应用到符合条件的订单中，
+必须输入一个优惠券码，才能参与促销活动。
+
 ## 支付
 
 ### Config entity
