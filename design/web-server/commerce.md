@@ -88,3 +88,10 @@ which in turn depend on other best-of-breed modules and libraries.
 因为这些表单的作用是在Drupal网站上做第三方支付网关跳转处理。
 
 > 对于 `独立客户端` 的情况，不单单PaymentProcess 是没有作用的，整个 Checkout过程都是没有作用的，全部要改为API接口处理。
+
+
+### Plugin basic Entity Bundle
+
+此新特性，支持用 plugin创建 bundle
+
+https://www.drupal.org/project/entity/issues/2817751
